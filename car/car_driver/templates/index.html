@@ -1,1 +1,63 @@
-<h2>Welcome To Carpool</h2>
+{% extends 'base_folder/base.html' %}
+
+{% load bootstrap3 %}
+{% load static %}
+{% block styles %}
+  {% bootstrap_css %}
+  <link rel="stylesheet" href="{% static 'css/drivers.css' %}">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+{% endblock %}
+{% block content %}
+  <div class="car-header">
+    <h2>Ride or Drive</h2>
+  </div>
+
+  <div class="fastFoods">
+    <div class="row">
+      <div class="col-md-1"></div>
+
+      <div class="col-md-10">
+
+        <div class="fastFood-pic">
+          <div class="container">
+            <div class="card">
+              <div class="col-md-4">
+                <div class="riders">
+                  <h3>Rider</h3>
+                  <h5>Find everything you need to track your success on the road.</h5>
+
+                  <form>
+                    <a href="{% url 'updateuserprofile' %}" class="btn btn-danger btn-lg navbar-btn">
+                      Find a Ride
+                    </a>
+                  </form>
+                </div>
+              </div>
+              <div class="col-md-2"></div>
+              <div class="col-md-4">
+                <div class="driver">
+                  <h3>Driver</h3>
+                  <h5>Manage your payment options, review trip history, and more.</h5>
+                  <form>
+                    <a href="{% url 'activatedriver' %}" class="btn btn-danger btn-lg navbar-btn">
+                      Driver Activation
+                    </a>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-1"></div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  {% bootstrap_javascript %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+{% endblock %}
