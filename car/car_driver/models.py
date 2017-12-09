@@ -28,7 +28,7 @@ class DriverProfile(models.Model):
     gender = models.CharField(
         max_length=30, choices=Gender_Choices, default='None')
 
-
+#
 # @receiver(post_save, sender=User)
 # def default_drivers_group(sender, instance, created, **kwargs):
 #     if created:
