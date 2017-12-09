@@ -24,17 +24,8 @@ class RiderProfile(models.Model):
         max_length=30, choices=Gender_Choices, default='None', blank=True)
 
     @staticmethod
-    def default_riders_group(sender, instance, created, **kwargs):
-        if created and settings.REGISTRATION_DEFAULT_GROUP_NAME:
-            instance.groups.add(Group.objects.get(
-                name=settings.REGISTRATION_DEFAULT_GROUP_NAME))
-
-    @staticmethod
     def is_rider(instance):
         return instance.groups.filter(name='riders').exists()
-
-
-post_save.connect(RiderProfile.default_riders_group, sender=User)
 
 
 User.rider_profile = property(
