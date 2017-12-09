@@ -25,7 +25,9 @@ def updateuserprofile(request):
             # instance.groups.add(Group.objects.get(
             #     name=settings.REGISTRATION_DEFAULT_GROUP_NAME))
             form.save()
-            user_profile.save()
+            user_profile.save(commit=False)
+            instance.groups.add(Group.objects.get(
+                name=settings.REGISTRATION_DEFAULT_GROUP_NAME))
             messages.success(request, 'Profile successfully updated')
             return redirect(ride)
         else:
