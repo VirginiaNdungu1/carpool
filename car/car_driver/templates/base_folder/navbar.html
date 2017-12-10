@@ -1,6 +1,7 @@
 {% load bootstrap3 %}
 {% load static %}
 {% load staticfiles %}
+{% load drivers %}
 {% block title %}{{title}}{% endblock %}
 {% block styles%}
   {% bootstrap_css %}
@@ -58,21 +59,32 @@
                   </a>
                 </form>
               </li>
+              <li>
+                <a href="/">Find a Ride</a>
+              </li>
               <!-- <li>
                 <a href="/accounts/register/">sign up</a>
               </li> -->
               <li>
-                <a href="/">following</a>
+                <a href="/">Travel Plans</a>
               </li>
+              <!-- <li>
+                <a href="/accounts/register/">sign up</a>
+              </li> -->
+
               <li>
                 <a href="/">{{user.username }}</a>
               </li>
               <li>
                 <a href="/logout">Logout</a>
               </li>
+
             {% else %}
               <li>
-                <a class='navbar-brand' href="/accounts/register/">sign up</a>
+                <a class='navbar-brand' href="/accounts/register/">View Map</a>
+              </li>
+              <li>
+                <a class='navbar-brand' href="/accounts/register/">Register</a>
               </li>
               <li>
                 <a class='navbar-brand' href="/accounts/login">Sign In</a>
