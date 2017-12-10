@@ -45,3 +45,25 @@ def save_user_profile(sender, instance, **kwargs):
 
 
 post_save.connect(create_user_profile, sender=User)
+
+
+class TravelPlan(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=20, null=False)
+    roads = models.ManyToManyField('PickupPoints', related_name='pickup')
+    depart = models.CharField(max_length=140)
+    alight = models.CharField(max_length=140)
+    current_location = models.CharField(max_length=140)
+    capacity = models.IntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+
+class PickupPoints(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    road_name = models.CharField(max_length=140)
+
+    def __str__(self):
+        return self.road_name
