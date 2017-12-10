@@ -44,3 +44,18 @@ def save_user_profile(sender, instance, **kwargs):
 
 
 post_save.connect(create_user_profile, sender=User)
+
+
+class TravelRequest(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=140)
+    desired_pickup = models.CharField(max_length=140)
+    current_location = models.CharField(max_length=140)
+    endpoint = models.CharField(max_length=140)
+    capacity = models.IntegerField()
+    pub_date = models.DateTimeField(auto_now_add=True)
+    travel_plan = models.ForeignKey(
+        'car_driver.TravelPlan', on_delete=models.CASCADE)
+
+    def __str__(self):
+        self.name
