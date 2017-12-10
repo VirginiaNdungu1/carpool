@@ -28,16 +28,6 @@ class DriverProfile(models.Model):
     gender = models.CharField(
         max_length=30, choices=Gender_Choices, default='None')
 
-#
-# @receiver(post_save, sender=User)
-# def default_drivers_group(sender, instance, created, **kwargs):
-#     if created:
-#         instance.groups.add(Group.objects.get(
-#             name=settings.DRIVER_GROUP_NAME))
-#
-#
-# post_save.connect(default_drivers_group, sender=User)
-
 
 User.profile = property(
     lambda u: DriverProfile.objects.get_or_create(user=u)[0])
