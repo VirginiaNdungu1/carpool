@@ -3,12 +3,18 @@ from car import settings
 from django.db import transaction
 from django.contrib import messages
 from .models import DriverProfile
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from .forms import DriverForm, DriverProfileForm
 from django.contrib.auth.models import User, Group
 # Create your views here.
 
 
+def is_driver(user):
+    return user.groups.filter(name='drivers').exists()
+
+
+@login_required(login_url='/accounts/login/')
+@user_passes_test(is_driver)
 def drive(request):
     return render(request, 'drive.html')
 
@@ -37,3 +43,8 @@ def activateDriver(request):
         driver_profile = DriverProfileForm(instance=request.user.profile)
 
     return render(request, 'profiles/profile.html', {'form': form, 'driver_profile': driver_profile})
+
+
+def is_driver(request):
+    user = request.user
+    return user.groups.filter(name='drivers').exists()
