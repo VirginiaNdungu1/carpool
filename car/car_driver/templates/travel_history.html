@@ -1,0 +1,96 @@
+{% load bootstrap3 %}
+{% load static %}
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'css/drivers.css' %}">
+{% endblock %}
+{% block content %}
+  <div class="content-section">
+    <div class="outer-table">
+      <div class="middle-table">
+        <div class="inner-table">
+          <h1 style="text-align:center;">Travel History</h1>
+          {% if travelplans %}
+            <hr class="intro-divider">
+            <div class="center">
+              <table class="table table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th width="15%">
+                      Name
+                    </th>
+                    <th width="15%">
+                      Time
+                    </th>
+                    <th width="20%">
+                      StartPoint
+                    </th>
+                    <th width="20%">
+                      EndPoint
+                    </th>
+                    <th width="10%">
+                      Reviews
+                    </th>
+                    <th width="10%">
+                      Requests Count
+                    </th>
+                    <th width="10%">
+                      Edit
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for travelplan in travelplans %}
+                    <tr>
+                      <td>
+                        <i class="fa fa-key"></i>
+                        {{travelplan.name}}
+                      </td>
+                      <td>
+                        {{  travelplan.created_at}}
+                      </td>
+                      <td>
+                        {{travelplan.depart}}
+                      </td>
+                      <td>
+                        {{travelplan.alight}}
+                      </td>
+                      <td>
+                        <a href="/">
+                          <i class="fa fa-pencil"></i>
+                          Reviews
+                        </a>
+                      </td>
+                      <td>
+                        Requests Count
+                      </td>
+                      <td>
+                        <a href="{% url 'update_travelplan' travelplan.id %}">
+                          <i class="fa fa-pencil"></i>
+                          Edit
+                        </a>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+            <div style="text-align: center">
+            {% else %}
+              <div style="text-align: center">
+                <h3>
+                  Create your First Travel Plan
+                </h3>
+                <hr class="intro-divider">
+              {% endif %}
+              <a href="{% url 'create_travelplan' %}" class="btn btn-default btn-lg">
+                <i class="fa fa-plus"></i>
+                Create Travel Plan
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
