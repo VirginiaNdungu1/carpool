@@ -1,5 +1,5 @@
 from django import forms
-from .models import User, Group, DriverProfile, TravelPlan
+from .models import User, Group, DriverProfile, TravelPlan, PickupPoints
 
 
 class DriverForm(forms.ModelForm):
@@ -15,7 +15,13 @@ class DriverProfileForm(forms.ModelForm):
         exclude = ['user', 'bio']
 
 
-class TravelPlanForm(form.ModelForm):
+class TravelPlanForm(forms.ModelForm):
     class Meta:
         model = TravelPlan
-        exclude = ['name', 'created_at']
+        exclude = ['created_at', 'user']
+
+
+class PickupPointsForm(forms.ModelForm):
+    class Meta:
+        model = PickupPoints
+        exclude = ['user']
