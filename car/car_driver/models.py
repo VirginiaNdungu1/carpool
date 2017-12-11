@@ -57,6 +57,11 @@ class TravelPlan(models.Model):
     capacity = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
 
+    @classmethod
+    def display_travelplans(cls, id):
+        travelplans = cls.objects.filter(user_id=id)
+        return travelplans
+
     def __str__(self):
         return self.name
 
