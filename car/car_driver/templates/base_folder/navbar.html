@@ -59,19 +59,18 @@
                   </a>
                 </form>
               </li>
-              <li>
+              <!-- <li>
                 <a href="/">Find a Ride</a>
-              </li>
-              <!-- <li>
-                <a href="/accounts/register/">sign up</a>
               </li> -->
               <li>
-                <a href="/">Travel Plans</a>
+                <a href="{% url 'travelplan_history' user.id %}">Travel</a>
               </li>
-              <!-- <li>
-                <a href="/accounts/register/">sign up</a>
-              </li> -->
-
+              <li>
+                <a href="{% url 'pickupoint'%}">Pickup Point</a>
+              </li>
+              <li>
+                <a href="{% url 'create_travelplan' %}">Travel Plans</a>
+              </li>
               <li>
                 <a href="/">{{user.username }}</a>
               </li>
