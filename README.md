@@ -2,17 +2,17 @@
 Application that helps you get a ride
 
 ## Prerequisites
-  Babel==2.5.1
-  confusable-homoglyphs==2.0.2
-  Django==1.11.7
-  django-bootstrap3==9.1.0
-  django-phonenumber-field==1.3.0
-  django-registration==2.3
-  olefile==0.44
-  phonenumberslite==8.8.7
-  Pillow==4.3.0
-  psycopg2==2.7.3.2
-  pytz==2017.3
+     * Babel==2.5.1
+     * confusable-homoglyphs==2.0.2
+     * Django==1.11.7
+     * django-bootstrap3==9.1.0
+     * django-phonenumber-field==1.3.0
+     * django-registration==2.3
+     * olefile==0.44
+     * phonenumberslite==8.8.7
+     * Pillow==4.3.0
+     * psycopg2==2.7.3.2
+     * pytz==2017.3
   
  ## Installation
 
